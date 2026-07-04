@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import "tailwindcss" source("../");
+
+@custom-variant dark (&:is(.dark *));
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  overflow-x: hidden;
+  background: #080808;
+  color: #f5f3ef;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  pointer-events: none;
+  opacity: 0.042;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: -12%;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 22% 18%, rgba(230, 207, 167, 0.055), transparent 34rem),
+    radial-gradient(ellipse at 78% 36%, rgba(200, 156, 106, 0.045), transparent 30rem),
+    radial-gradient(ellipse at 50% 72%, rgba(255, 255, 255, 0.024), transparent 36rem);
+  filter: blur(28px);
+}
+
+::selection {
+  background: #c89c6a;
+  color: #080808;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #e6cfa7, #c89c6a, #8a6740);
+  border-radius: 999px;
+}
+
+@theme inline {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Cinzel', ui-serif, Georgia, serif;
+  --font-label: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #080808;
+  --color-surface: #121212;
+  --color-surface-2: #171411;
+  --color-line: #2c221a;
+
+  --color-cream: #f5f3ef;
+  --color-muted: #9e978f;
+  --color-bronze: #c89c6a;
+  --color-gold: #e6cfa7;
+}
+
+.hero-rise {
+  animation: rise-in 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.premium-button {
+  display: inline-flex;
+  min-height: 3.1rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.9rem 1.65rem;
+  font-family: var(--font-label);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition:
+    transform 420ms ease,
+    border-color 420ms ease,
+    background-color 420ms ease,
+    color 420ms ease,
+    box-shadow 420ms ease;
+}
+
+.premium-button:hover {
+  transform: translateY(-2px);
+}
+
+.premium-button.primary {
+  background: linear-gradient(135deg, #e6cfa7, #c89c6a 48%, #9c7446);
+  color: #080808;
+  box-shadow: 0 18px 50px -18px rgba(200, 156, 106, 0.86);
+}
+
+.premium-button.primary:hover {
+  box-shadow: 0 0 44px rgba(200, 156, 106, 0.2);
+}
+
+.premium-button.secondary {
+  border: 1px solid rgba(200, 156, 106, 0.24);
+  background: rgba(18, 18, 18, 0.58);
+  color: #f5f3ef;
+  backdrop-filter: blur(18px);
+}
+
+.premium-button.secondary:hover {
+  border-color: rgba(230, 207, 167, 0.52);
+  color: #e6cfa7;
+  box-shadow: 0 0 38px rgba(200, 156, 106, 0.11);
+}
+
+.saturn-motion {
+  animation: planet-rotate 26s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+.earth-motion {
+  animation: planet-rotate-slow 38s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+.project-visual {
+  position: absolute;
+  inset: 0;
+  transition: transform 700ms ease;
+}
+
+.group:hover .project-visual {
+  transform: scale(1.045);
+}
+
+.project-visual-vienna {
+  background:
+    linear-gradient(90deg, rgba(200, 156, 106, 0.1) 1px, transparent 1px) 0 0 / 34px 34px,
+    linear-gradient(180deg, rgba(230, 207, 167, 0.08), transparent 42%),
+    radial-gradient(circle at 62% 42%, rgba(200, 156, 106, 0.22), transparent 9rem),
+    linear-gradient(135deg, #24170f, #101010 62%, #080808);
+}
+
+.project-visual-rail {
+  background:
+    linear-gradient(118deg, transparent 42%, rgba(230, 207, 167, 0.22) 42% 43%, transparent 43%),
+    repeating-linear-gradient(90deg, transparent 0 24px, rgba(200, 156, 106, 0.09) 24px 25px),
+    radial-gradient(circle at 32% 38%, rgba(230, 207, 167, 0.14), transparent 8rem),
+    linear-gradient(135deg, #171411, #0a0a0a);
+}
+
+.project-visual-fortress {
+  background:
+    linear-gradient(145deg, transparent 36%, rgba(200, 156, 106, 0.16) 36% 37%, transparent 37%),
+    linear-gradient(35deg, transparent 52%, rgba(230, 207, 167, 0.12) 52% 53%, transparent 53%),
+    radial-gradient(circle at 50% 18%, rgba(200, 156, 106, 0.2), transparent 9rem),
+    linear-gradient(180deg, #2b1b12, #121212 58%, #080808);
+}
+
+.project-visual-atelier {
+  background:
+    radial-gradient(circle at 50% 52%, transparent 0 4rem, rgba(230, 207, 167, 0.14) 4.05rem 4.12rem, transparent 4.18rem),
+    linear-gradient(90deg, rgba(200, 156, 106, 0.09) 1px, transparent 1px) 0 0 / 44px 44px,
+    radial-gradient(circle at 70% 30%, rgba(200, 156, 106, 0.16), transparent 8rem),
+    linear-gradient(135deg, #191511, #080808);
+}
+
+.project-visual-audio {
+  background:
+    repeating-linear-gradient(90deg, transparent 0 18px, rgba(230, 207, 167, 0.11) 18px 19px, transparent 19px 28px),
+    radial-gradient(ellipse at 50% 42%, rgba(200, 156, 106, 0.18), transparent 12rem),
+    linear-gradient(135deg, #25170f, #101010);
+}
+
+.project-visual-lab {
+  background:
+    conic-gradient(from 20deg at 50% 50%, transparent, rgba(200, 156, 106, 0.16), transparent 32%),
+    linear-gradient(90deg, rgba(230, 207, 167, 0.08) 1px, transparent 1px) 0 0 / 52px 52px,
+    linear-gradient(135deg, #18120e, #080808);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 1.4rem, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes planet-rotate {
+  from {
+    rotate: -1.5deg;
+  }
+  to {
+    rotate: 2.5deg;
+  }
+}
+
+@keyframes planet-rotate-slow {
+  from {
+    rotate: 1deg;
+  }
+  to {
+    rotate: -2deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
